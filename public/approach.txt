@@ -1,0 +1,16 @@
+## Please describe your process for approaching the code challenge. What kind of planning did you do? Did your plans change as you began coding?
+- As this task is strictly bounded with time, I implmented very basic version of app
+- Firstly, I have decided the basic scenarios and possibilities
+- Then I have designed the table and its fields to fulfil that scenarios
+- Then I have decided the gems to use
+- Mostly I followed what I have planed except the change in database. First I have used SQLite and then moved to postgresql for Heroku
+
+## Describe the schema design you chose. Why did you choose this design? What other alternatives did you consider?
+- I have created Timesheet table and added start_date, end_date and user_id referencing to user.
+- Requirement is flexible about scope of user, but I have tightly bounded it with User table as timesheet will be per user
+- I have thought little extended version of current, we can create timesheet_entries table and have start_time and end_time. We can reference it with Timesheet table with has_many association. I believe it is better in terms of database design because when we search for timesheet mostly need calculated information and not entries. So we can put result in timesheet table and timesheet entry related data in timesheet_entries table.
+
+
+## If you were given another day to work on this, how would you spend it? What if you were given a month?
+- If I were given more time, I will implement the extended version of this app and admin to this app.
+- If I were given a month then I will add email notification, reminder and other useful statistics for user and admin like who has worked highest in current month, who has worked lowest in current month, Who is taking highest breaks etc. 

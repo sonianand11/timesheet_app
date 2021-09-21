@@ -13,3 +13,6 @@
 -   `RAILS_ENV=test rails s -p 5017`
 -   in new terminal tab `yarn cypress open --project ./test`
 -   above command will open cypress window, click to timesheets_spec.js file
+
+## Demo on Heroku 
+- https://polar-escarpment-09673.herokuapp.com/
