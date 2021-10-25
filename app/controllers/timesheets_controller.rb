@@ -21,13 +21,15 @@ class TimesheetsController < ApplicationController
   end
 
   def clock_in
-    current_user.create_new_timesheet
-    redirect_to timesheets_path
+    render json: {clock_in: !current_user.create_new_timesheet.errors.any? }
   end
 
   def clock_out
-    current_user.current_timessheet_slot.update_end_time
-    redirect_to timesheets_path
+    if current_timessheet_slot = current_user.current_timessheet_slot
+      render json: {clock_in: !current_timessheet_slot.update_end_time}
+    else
+      render json: {error: "Please check in for new timesheet!"}, status: 406  
+    end
   end
 
   # GET /timesheets/1 or /timesheets/1.json

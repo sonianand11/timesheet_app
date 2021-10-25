@@ -11,6 +11,6 @@ class User < ApplicationRecord
   end
 
   def create_new_timesheet
-    current_timessheet_slot || self.timesheets.create(start_time: DateTime.now)
+    current_timessheet_slot || self.timesheets.create(start_time: DateTime.now) 
   end
 end

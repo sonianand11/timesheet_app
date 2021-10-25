@@ -1,28 +1,29 @@
 import { Table, message, Popconfirm } from "antd";
 import React from "react";
-// import AddBeerModal from "./AddBeerModal";
-
+import { Link } from "react-router-dom";
 class Timesheets extends React.Component {
 	columns = [
 		{
-			title: "Brand",
-			dataIndex: "brand",
-			key: "brand",
+			title: "Start time",
+			dataIndex: "start_time",
+			key: "start_time",
 		},
 		{
-			title: "Style",
-			dataIndex: "style",
-			key: "style",
+			title: "End Time",
+			dataIndex: "end_time",
+			key: "end_time",
 		},
 		{
-			title: "Country",
-			dataIndex: "country",
-			key: "country",
+			title: "Hours worked",
+			dataIndex: "hours_worked",
+			key: "hours_worked",
 		},
 		{
-			title: "Quantity",
-			dataIndex: "quantity",
-			key: "quantity",
+			title: "",
+			key: "action",
+			render: (_text, record) => (
+				<Link to={`/timesheets/${record.id}`}>Show</Link>
+			),
 		},
 		{
 			title: "",
@@ -39,7 +40,7 @@ class Timesheets extends React.Component {
 					</a>
 				</Popconfirm>
 			),
-		},
+		}
 	];
 
 	state = {
@@ -64,10 +65,9 @@ class Timesheets extends React.Component {
 					const newEl = {
 						key: timesheet.id,
 						id: timesheet.id,
-						brand: timesheet.brand,
-						style: timesheet.style,
-						country: timesheet.country,
-						quantity: timesheet.quantity,
+						start_time: timesheet.start_time,
+						end_time: timesheet.end_time,
+						hours_worked: timesheet.hours_worked,
 					};
 
 					this.setState((prevState) => ({
@@ -81,6 +81,25 @@ class Timesheets extends React.Component {
 	reloadTimesheets = () => {
 		this.setState({ timesheets: [] });
 		this.loadTimesheets();
+	};
+
+	showTimesheet = (id) => {
+		const url = `/timesheets/${id}`;
+		alert(url)
+		const navigate = useNavigate()
+		navigate(url)
+		// window.history.pushState({},"", url);
+		// fetch(url, {
+		// 	method: "get",
+		// })
+		// .then((data) => {
+		// 	if (data.ok) {
+		// 		this.reloadTimesheets();
+		// 		return data.json();
+		// 	}
+		// 	throw new Error("Network error.");
+		// })
+		// .catch((err) => message.error("Error: " + err));
 	};
 
 	deleteTimesheet = (id) => {
@@ -111,7 +130,7 @@ class Timesheets extends React.Component {
 
 			</>
 		);
-	}
+	};
 }
 
 export default Timesheets;
