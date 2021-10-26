@@ -8,6 +8,7 @@ const App = () => {
   return(
     <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/timesheets" exact component={Home} />
       <Route path={`/timesheets/:id`} exact component={Timesheet} />
     </Switch>
   )

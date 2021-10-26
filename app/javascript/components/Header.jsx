@@ -12,7 +12,8 @@ export default () => (
         <Link to={`/`}>Home</Link>        
       </Menu.Item>
       <Menu.Item key="2"><a href="/users/edit">Edit Profile</a> </Menu.Item>
-      <Menu.Item key="3"><a href="/users/sign_out">Logout</a></Menu.Item>
+      <Menu.Item key="3"><a href="/reports">Reports</a></Menu.Item>
+      <Menu.Item key="4"><a href="/users/sign_out">Logout</a></Menu.Item>
     </Menu>
   </Header>
 );

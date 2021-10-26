@@ -8,7 +8,7 @@ class Timesheet < ApplicationRecord
   validate :check_end_time
 
   def check_end_time
-    if self.end_time && self.end_time < self.start_time
+    if self.end_time && self.start_time && self.end_time < self.start_time
       self.errors.add(:end_time, "can't be less than start time ")
     end
   end

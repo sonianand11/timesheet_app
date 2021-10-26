@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :timesheets, dependent: :destroy
-  
 
   def current_timessheet_slot
     timesheets.where(end_time: nil).first
