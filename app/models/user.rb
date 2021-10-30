@@ -4,13 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :timesheets, dependent: :destroy
-  
 
   def current_timessheet_slot
     timesheets.where(end_time: nil).first
   end
 
   def create_new_timesheet
-    current_timessheet_slot || self.timesheets.create(start_time: DateTime.now)
+    current_timessheet_slot || self.timesheets.create(start_time: DateTime.now) 
   end
 end
