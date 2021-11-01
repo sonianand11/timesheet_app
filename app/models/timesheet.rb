@@ -8,12 +8,12 @@ class Timesheet < ApplicationRecord
   validate :check_end_time
 
   def update_hours_worked
-    self.update(hours_worked: hours_worked)
+    self.update(hours_worked: calculate_hours_worked)
   end
 
-  def hours_worked
+  def calculate_hours_worked
     if start_time && end_time
-      (start_time - end_time).seconds.in_hours.to_i
+      (end_time - start_time).seconds.in_hours.to_f.round(2)
     else
       0
     end

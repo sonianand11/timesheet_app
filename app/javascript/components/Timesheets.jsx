@@ -52,7 +52,7 @@ class Timesheets extends React.Component {
 	}
 
 	loadTimesheets = () => {
-		const url = "/timesheets.json";
+		const url = "/api/v1/timesheets.json";
 		fetch(url)
 			.then((data) => {
 				if (data.ok) {
@@ -83,27 +83,8 @@ class Timesheets extends React.Component {
 		this.loadTimesheets();
 	};
 
-	showTimesheet = (id) => {
-		const url = `/timesheets/${id}`;
-		alert(url)
-		const navigate = useNavigate()
-		navigate(url)
-		// window.history.pushState({},"", url);
-		// fetch(url, {
-		// 	method: "get",
-		// })
-		// .then((data) => {
-		// 	if (data.ok) {
-		// 		this.reloadTimesheets();
-		// 		return data.json();
-		// 	}
-		// 	throw new Error("Network error.");
-		// })
-		// .catch((err) => message.error("Error: " + err));
-	};
-
 	deleteTimesheet = (id) => {
-		const url = `/timesheets/${id}`;
+		const url = `/api/v1/timesheets/${id}`;
 
 		fetch(url, {
 			method: "delete",

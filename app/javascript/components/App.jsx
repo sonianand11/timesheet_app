@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "antd/dist/antd.css";
+import { Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Timesheet from "../components/Timesheet";
+import "antd/dist/antd.css";
 
 const App = () => {
   return(

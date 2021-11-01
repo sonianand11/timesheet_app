@@ -1,5 +1,4 @@
-class TimesheetsController < ApplicationController
-  before_action :authenticate_user!
+class Api::V1::TimesheetsController < ApplicationController
 
   before_action :set_timesheet, only: %i[ show edit update destroy ]
   before_action :check_current_timesheet, only: [:new]
@@ -14,10 +13,11 @@ class TimesheetsController < ApplicationController
   def index
     @current_timesheet = current_user.current_timessheet_slot
     @timesheets = current_user.timesheets
-    respond_to do |format|
-      format.json {render json: {timesheets: @timesheets}}
-      format.html
-    end
+    render json: {timesheets: @timesheets}
+    # respond_to do |format|
+    #   format.json {render json: {timesheets: @timesheets}}
+    #   format.html
+    # end
   end
 
   def clock_in

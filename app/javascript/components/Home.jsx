@@ -38,9 +38,9 @@ const ClockInCheckOutBtn = (props) => {
   const [clockIn, setClockIn] = useState(false)
 
   function clockInClick(){
-    let url = `/timesheets/clock_in`
+    let url = `/api/v1/timesheets/clock_in`
     if(clockIn){
-      url = `/timesheets/clock_out`
+      url = `/api/v1/timesheets/clock_out`
     }
     console.log("Loading timesheets")
 
@@ -64,18 +64,17 @@ const Home = (props) => {
 
   return(
     <Layout className="layout">
-    <Header />
-    <Content style={{ padding: "0 50px" }}>
-      <ClockInCheckOutWrapper> 
-        <ClockInCheckOutBtn />
-      </ClockInCheckOutWrapper>
-      
-      <div className="site-layout-content" style={{ margin: "100px auto" }}>
-        <h1>Timesheets</h1>
-        <Timesheets />
-      </div>
-    </Content>
-    <Footer style={{ textAlign: "center" }}>Timesheet Management ©2021.</Footer>
+      <Header />
+      <Content style={{ padding: "0 50px" }}>
+        <ClockInCheckOutWrapper> 
+          <ClockInCheckOutBtn />
+        </ClockInCheckOutWrapper>      
+        <div className="site-layout-content" style={{ margin: "100px auto" }}>
+          <h1>Timesheets</h1>
+          <Timesheets />
+        </div>
+      </Content>
+      <Footer style={{ textAlign: "center" }}>Timesheet Management ©2021.</Footer>
   </Layout>
 
   )
