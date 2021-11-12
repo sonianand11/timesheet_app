@@ -34,6 +34,7 @@ class Api::V1::TimesheetsController < ApplicationController
 
   # GET /timesheets/1 or /timesheets/1.json
   def show
+    render json: {timesheet: @timesheet}, status: 200  
   end
 
   # GET /timesheets/new
